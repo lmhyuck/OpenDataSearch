@@ -1,0 +1,98 @@
+/* api-server/static/css/style.css */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  background-color: #f1f3f5;
+}
+
+.search-container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 15px;
+  width: 65%;
+  font-size: 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+#results {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.item {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  border-left: 5px solid #007bff;
+}
+
+.title {
+  font-size: 20px;
+  color: #007bff;
+  font-weight: bold;
+}
+.desc {
+  color: #495057;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.meta {
+  font-size: 13px;
+  color: #868e96;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f3f5;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 50px;
+}
+
+#pagination button {
+  padding: 8px 15px;
+  background-color: #6c757d;
+  font-size: 14px;
+}

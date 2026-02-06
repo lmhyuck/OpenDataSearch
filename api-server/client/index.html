@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>공공데이터 검색 엔진</title>
+    <link rel="stylesheet" href="/client/css/style.css" />
+  </head>
+  <body>
+    <div class="search-container">
+      <h1>🔎 공공데이터 검색</h1>
+      <p>우리동네 공공데이터 메타데이터를 빠르게 찾아보세요</p>
+
+      <form onsubmit="search(1); return false;">
+        <input
+          type="text"
+          id="query"
+          placeholder="검색어를 입력하세요 (예: 미세먼지)"
+        />
+        <button type="submit">검색</button>
+      </form>
+    </div>
+
+    <div id="results"></div>
+    <div id="pagination" style="margin-top: 20px"></div>
+
+    <script>
+      let currentPage = 1;
+      let currentQuery = "";
+
+      async function search(page = 1) {
+        const q = document.getElementById("query").value;
+        if (!q) return;
+
+        currentPage = page;
+        currentQuery = q;
+
+        const res = await fetch(`/search?q=${q}&page=${page}`);
+        const json = await res.json();
+
+        // 1. 결과 출력
+        const resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = `<p>총 <b>${json.total_found}</b>개의 결과 (페이지: ${json.current_page}/${json.total_pages})</p>`;
+
+        json.data.forEach((item) => {
+          resultsDiv.innerHTML += `
+                    <div class="item">
+                        <div class="title">${item.title}</div>
+                        <div class="desc">${item.desc}</div>
+                        <div class="meta">📁 ${item.category} | 🏢 ${item.org}</div>
+                    </div>`;
+        });
+
+        // 2. 페이지네이션 버튼 만들기
+        renderPagination(json.total_pages);
+      }
+
+      function renderPagination(totalPages) {
+        const nav = document.getElementById("pagination");
+        nav.innerHTML = "";
+
+        if (totalPages <= 1) return;
+
+        // 이전 버튼
+        if (currentPage > 1) {
+          nav.innerHTML += `<button onclick="search(${
+            currentPage - 1
+          })">이전</button> `;
+        }
+
+        // 현재 페이지 표시
+        nav.innerHTML += `<span> ${currentPage} / ${totalPages} </span>`;
+
+        // 다음 버튼
+        if (currentPage < totalPages) {
+          nav.innerHTML += ` <button onclick="search(${
+            currentPage + 1
+          })">다음</button>`;
+        }
+      }
+    </script>
+  </body>
+</html>
