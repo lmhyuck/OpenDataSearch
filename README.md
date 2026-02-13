@@ -37,7 +37,7 @@ Bash
 docker-compose up -d
 Tip: 실행 후 docker ps를 입력하여 elasticsearch, kafka, zookeeper 컨테이너가 정상적으로 Up 상태인지 확인하세요.
 
-3. 서비스 실행 순서 (Service Startup Sequence)
+서비스 실행 순서 (Service Startup Sequence)
 각 서비스는 서로 연결되어 있으므로 아래 순서대로 터미널을 각각 열어서 실행해 주세요.
 
 Step 1: 데이터 처리기 실행 (Stream Processor)
