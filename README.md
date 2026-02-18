@@ -19,7 +19,7 @@
 
 ---
 
-## 🛠 사용 기술 스테택
+## 🛠 사용 기술 스택
 - **Language**: Python 3.10+
 - **Infrastructure**: Docker, Docker Compose
 - **Message Broker**: Apache Kafka
