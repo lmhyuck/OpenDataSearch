@@ -1,98 +1,143 @@
-/* api-server/static/css/style.css */
+/* 1. 기본 스타일 및 레이아웃 */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 800px;
-  margin: 50px auto;
-  text-align: center;
-  background-color: #f1f3f5;
-}
-
-.search-container {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-h1 {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
   color: #333;
+}
+
+/* 2. 검색창 섹션 (상단 고정 느낌) */
+.search-container {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.search-container h1 {
+  font-size: 2.5rem;
   margin-bottom: 10px;
+  color: #1a73e8; /* 구글 블루 느낌 */
 }
 
-input {
-  padding: 15px;
-  width: 65%;
-  font-size: 16px;
-  border: 2px solid #e9ecef;
-  border-radius: 10px;
+.search-container p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 50px; /* 둥근 검색창 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+form:focus-within {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"] {
+  flex: 1;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
   outline: none;
-  transition: all 0.3s;
+  background: transparent;
 }
 
-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
-}
-
-button {
-  padding: 15px 30px;
-  font-size: 16px;
-  background-color: #007bff;
+button[type="submit"] {
+  background-color: #1a73e8;
   color: white;
   border: none;
-  border-radius: 10px;
+  padding: 12px 30px;
+  border-radius: 40px;
   cursor: pointer;
   font-weight: bold;
-  margin-left: 10px;
+  transition: background 0.2s;
 }
 
-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-1px);
+button[type="submit"]:hover {
+  background-color: #1557b0;
 }
 
+/* 3. 검색 결과 아이템 스타일 (카드형) */
 #results {
-  margin-top: 30px;
-  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .item {
   background: white;
+  padding: 20px;
+  margin-bottom: 15px;
   border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-  border-left: 5px solid #007bff;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.title {
-  font-size: 20px;
-  color: #007bff;
-  font-weight: bold;
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-.desc {
-  color: #495057;
-  margin-top: 10px;
+
+.item .title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a0dab; /* 검색 결과 제목 국룰 색상 */
+  margin-bottom: 8px;
+}
+
+.item .desc {
+  font-size: 0.95rem;
   line-height: 1.6;
-}
-.meta {
-  font-size: 13px;
-  color: #868e96;
-  margin-top: 15px;
-  padding-top: 10px;
-  border-top: 1px solid #f1f3f5;
+  color: #4d5156;
+  margin-bottom: 10px;
 }
 
+.item .meta {
+  font-size: 0.85rem;
+  color: #70757a;
+  background: #f1f3f4;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* 4. 페이지네이션 */
 #pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+  text-align: center;
+  margin-top: 40px;
   padding-bottom: 50px;
 }
 
 #pagination button {
-  padding: 8px 15px;
-  background-color: #6c757d;
-  font-size: 14px;
+  background: white;
+  border: 1px solid #dadce0;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #3c4043;
+}
+
+#pagination button:hover {
+  background: #f8f9fa;
+}
+
+.page-info {
+  font-weight: bold;
+  color: #70757a;
+  margin: 0 15px;
+}
+
+/* 5. 예외 처리 스타일 */
+.no-result {
+  text-align: center;
+  padding: 50px;
+  color: #999;
+  font-size: 1.2rem;
 }
